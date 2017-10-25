@@ -1,4 +1,4 @@
-# Basic Login 원리 구현
+# Basic Login&Server 구현
 
 ## 클라이언트(안드로이드)
 
