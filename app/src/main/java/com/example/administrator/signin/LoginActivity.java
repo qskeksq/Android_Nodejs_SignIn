@@ -310,23 +310,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected String doInBackground(Void... params) {
-
-//            for (String credential : DUMMY_CREDENTIALS) {
-//                String[] pieces = credential.split(":");
-//                if (pieces[0].equals(mEmail)) {
-//                    // Account exists, return true if the password matches.
-//                    return pieces[1].equals(mPassword);
-//                }
-//            }
-//            Map sign = new HashMap();
-//            sign.put("id",mEmail);
-//            sign.put("pw",mPassword);
+            // 1. 로그인 정보를 jsonString으로 서버에 전달
             Sign sign = new Sign();
             sign.id = mEmail;
             sign.pw = mPassword;
             Gson gson = new Gson();
             String jsonString = gson.toJson(sign);
 
+            // 2. 서버의 response jsonString 받음
             String jsonResult = Remote.sendPost("http://192.168.0.244:8090/signin", jsonString);
 
             // TODO: register the new account here.
@@ -337,6 +328,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onPostExecute(final String resultString) {
             mAuthTask = null;
             showProgress(false);
+            // 3. 서버의 응답 내용을 바탕으로 유호 처리
             Result result = new Gson().fromJson(resultString, Result.class);
             if(result.isOk()){
                 Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
@@ -345,14 +337,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }
-//            Log.e("넘어온결과", result);
-//            if (result.equals("ok") || result == "ok") {
-//                Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
-//                mPasswordView.setError(getString(R.string.error_incorrect_password));
-//                mPasswordView.requestFocus();
-//            }
         }
 
         @Override

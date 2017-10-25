@@ -27,14 +27,12 @@ public class Remote {
 //                postTemp += key + "=" + postData.get(key);
 //            }
 //            postTemp = postTemp.substring(1);
-
             con.setDoOutput(true);
             OutputStream os = con.getOutputStream();
             os.write(postData.getBytes());
             os.flush();
             os.close();
 
-            Log.e("코드", con.getResponseCode() + "");
             // 통신이 성공인지 체크
             if (con.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 // 여기서 부터는 파일에서 데이터를 가져오는 것과 동일
