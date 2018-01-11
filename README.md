@@ -71,12 +71,12 @@ public static String sendPost(String address, String postData) {
 ```
 
 ## Nodejs Server
-    - 1. url 분석 : pathname -> 쿼리스트링
-    - 2. 클라이언트에서 넘겨준 데이터 request에서 받기
-    - 3. json으로 넘어온 데이터 자바 객체로 변환 후 id, pw 유효값 확인
-    - 4. 확인되었다면 데이터베이스에서 일치하는 정보 찾아오기
-    - 5. json으로 db에서 받아온 사용자 정보 response에 담기.
-    - 6. 응답 코드, 메시지 담아서 최종 response 응답
+- 1. url 분석 : pathname -> 쿼리스트링
+- 2. 클라이언트에서 넘겨준 데이터 request에서 받기
+- 3. json으로 넘어온 데이터 자바 객체로 변환 후 id, pw 유효값 확인
+- 4. 확인되었다면 데이터베이스에서 일치하는 정보 찾아오기
+- 5. json으로 db에서 받아온 사용자 정보 response에 담기.
+- 6. 응답 코드, 메시지 담아서 최종 response 응답
 
 ```javaScript
 var server = http.createServer((request, response)=>{
@@ -144,18 +144,18 @@ var server = http.createServer((request, response)=>{
 ```
 
 ## MongoDb
-    - 1. 설치
-    - 2. 환경변수 설정(Path에 경로 지정)
-    - 3. 데이터베이스 서버 띄우기 : server 디렉토리에 data 만들고 'mongod --dbpath data경로' 실행
-    - 4. 데이터베이스 클라이언트 띄우기 : mongo.exe
-    - 5. 각종 명령어
-        - db.collection.insert({:});
-        - db.collection.find();
-        - db.student.insert({});
-        - db.student.find();
-        - switch student(테이블 이름)
-        - show tables
-        - show databases
-        - use 데이터베이스 이름
-        - db.user.remove({})
-    - #참고 : 데이터베이스는 없을 때 연결하면 자동으로 데이터베이스 자체를 생성해줌
+- 1. 설치
+- 2. 환경변수 설정(Path에 경로 지정)
+- 3. 데이터베이스 서버 띄우기 : server 디렉토리에 data 만들고 'mongod --dbpath data경로' 실행
+- 4. 데이터베이스 클라이언트 띄우기 : mongo.exe
+- 5. 각종 명령어
+    - db.collection.insert({:});
+    - db.collection.find();
+    - db.student.insert({});
+    - db.student.find();
+    - switch student(테이블 이름)
+    - show tables
+    - show databases
+    - use 데이터베이스 이름
+    - db.user.remove({})
+- #참고 : 데이터베이스는 없을 때 연결하면 자동으로 데이터베이스 자체를 생성해줌
